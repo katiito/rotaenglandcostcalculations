@@ -15,18 +15,14 @@ function out = readinIncidenceData(NSamples)
     
         %% Atchison et al, JID Paper
         Hospmode_dummy{1} = {-3.579902535, -3.869265664, -4.741527781, -5.248349692, -5.559676618, -7.493257598, -5.203838701, -4.372385758, -4.077705502};
-        Hospmode_dummy{2} = num2cell(ones(size(Hospmode_dummy{1},1), size(Hospmode_dummy{1},2)));
+        Hospmode_dummy{2} = nan(size(Hospmode_dummy{1},1), size(Hospmode_dummy{1},2));
         
         Hospsd_dummy{1} = {0.065417723, 0.208731265, 0.173753163, 0.13261478, 0.099295009, 0.051650206, 0.032362849, 0.044206961, 0.059129581};
-        Hospsd_dummy{2} = num2cell(zeros(size(Hospsd_dummy{1},1), size(Hospsd_dummy{1},2)));
+        Hospmode_dummy{2} = nan(size(Hospmode_dummy{1},1), size(Hospmode_dummy{1},2));
         
         HospPersonYears{1} = {732000, 720620, 710233, 701269, 709087, 23000000, 14000000, 6400000, 9200000};
-        HospPersonYears{2} = num2cell(zeros(size(HospPersonYears{1},1), size(HospPersonYears{1},2)));
-      
-        
         HospActualCases{1} = {15101, 10078, 4524, 2986, 2402, 11782, 70781, 71082, 134079};
-        HospActualCases{2} = num2cell(zeros(size(HospActualCases{1},1), size(HospActualCases{1},2)));
-        
+      
 %         avertedHosp_Estimate{1} = {5256, 4648, 1565, 710, 333, 1020, 6043, 9484, 21368}; %2013-14
 %         avertedHosp_Low{1} = {5256, 4648, 1565, 710, 333, 1020, 6043, 9484, 21368}; %2013-14
 %         avertedHosp_High{1} = {5256+0.1, 4648+0.1, 1565+0.1, 710+0.1, 333+0.1, 1020+0.1, 6043+0.1, 9484+0.1, 21368+0.1}; %2013-14

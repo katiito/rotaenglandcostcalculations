@@ -51,7 +51,7 @@ end
                 averted.GPAllagegroups{year} =  averted.GPAllagegroups{year} + averted.GP{year}{agegroup};
                 averted.AEAllagegroups{year} =  averted.AEAllagegroups{year} + averted.AE{year}{agegroup};
                 
-                
+                averted.Allagegroups{year} = averted.Allagegroups{year} + averted.All{year}{agegroup};
 %                 % these don't work
 %                 totalaverted.All{year}{agegroup} = averted.Hosp{year}{agegroup} + averted.GP{year}{agegroup} + averted.AE{year}{agegroup};
 %                 totalaverted.Allagegroups{year} = totalaverted.Allagegroups{year} + totalaverted.All{year}{agegroup};
