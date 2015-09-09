@@ -94,54 +94,54 @@ end
             sorted_totalavertedGP = sort(averted.GPAllagegroups{year});
             sorted_totalavertedAE = sort(averted.AEAllagegroups{year});
          
-            stats_total.All.mean{year} = sorted_totalcosts(floor(Numberofsamples*0.025));
-            stats_total.All.median{year} = sorted_totalcosts(ceil(Numberofsamples*0.975));
-            stats_total.All.mode{year} = sorted_totalcosts(Numberofsamples*0.5);
-            stats_total.All.low{year} = mode(round(sorted_totalcosts, -1));
-            stats_total.All.high{year} = mean(sorted_totalcosts);
+            stats_total.All.low{year} = sorted_totalcosts(floor(Numberofsamples*0.025));
+            stats_total.All.high{year} = sorted_totalcosts(ceil(Numberofsamples*0.975));
+            stats_total.All.median{year} = sorted_totalcosts(Numberofsamples*0.5);
+            stats_total.All.mode{year} = mode(round(sorted_totalcosts, -1));
+            stats_total.All.mean{year} = mean(sorted_totalcosts);
             
-            stats_total.AllAE.mean{year} = sorted_totalcostsAE(floor(Numberofsamples*0.025));
-            stats_total.AllAE.median{year} = sorted_totalcostsAE(ceil(Numberofsamples*0.975));
-            stats_total.AllAE.mode{year} = sorted_totalcostsAE(Numberofsamples*0.5);
-            stats_total.AllAE.low{year} = mode(round(sorted_totalcostsAE, -1));
-            stats_total.AllAE.high{year} = mean(sorted_totalcostsAE);
+            stats_total.AllAE.low{year} = sorted_totalcostsAE(floor(Numberofsamples*0.025));
+            stats_total.AllAE.high{year} = sorted_totalcostsAE(ceil(Numberofsamples*0.975));
+            stats_total.AllAE.median{year} = sorted_totalcostsAE(Numberofsamples*0.5);
+            stats_total.AllAE.mode{year} = mode(round(sorted_totalcostsAE, -1));
+            stats_total.AllAE.mean{year} = mean(sorted_totalcostsAE);
             
-            stats_total.AllGP.mean{year} = sorted_totalcostsGP(floor(Numberofsamples*0.025));
-            stats_total.AllGP.median{year} = sorted_totalcostsGP(ceil(Numberofsamples*0.975));
-            stats_total.AllGP.mode{year} = sorted_totalcostsGP(Numberofsamples*0.5);
-            stats_total.AllGP.low{year} = mode(round(sorted_totalcostsGP, -1));
-            stats_total.AllGP.high{year} = mean(sorted_totalcostsGP);
+            stats_total.AllGP.low{year} = sorted_totalcostsGP(floor(Numberofsamples*0.025));
+            stats_total.AllGP.high{year} = sorted_totalcostsGP(ceil(Numberofsamples*0.975));
+            stats_total.AllGP.median{year} = sorted_totalcostsGP(Numberofsamples*0.5);
+            stats_total.AllGP.mode{year} = mode(round(sorted_totalcostsGP, -1));
+            stats_total.AllGP.mean{year} = mean(sorted_totalcostsGP);
             
-            stats_total.AllHosp.mean{year} = sorted_totalcostsHosp(floor(Numberofsamples*0.025));
-            stats_total.AllHosp.median{year} = sorted_totalcostsHosp(ceil(Numberofsamples*0.975));
-            stats_total.AllHosp.mode{year} = sorted_totalcostsHosp(Numberofsamples*0.5);
-            stats_total.AllHosp.low{year} = mode(round(sorted_totalcostsHosp, -1));
-            stats_total.AllHosp.high{year} = mean(sorted_totalcostsHosp);
+            stats_total.AllHosp.low{year} = sorted_totalcostsHosp(floor(Numberofsamples*0.025));
+            stats_total.AllHosp.high{year} = sorted_totalcostsHosp(ceil(Numberofsamples*0.975));
+            stats_total.AllHosp.median{year} = sorted_totalcostsHosp(Numberofsamples*0.5);
+            stats_total.AllHosp.mode{year} = mode(round(sorted_totalcostsHosp, -1));
+            stats_total.AllHosp.mean{year} = mean(sorted_totalcostsHosp);
             
-            stats_averted.All.mean{year} = sorted_totalaverted(floor(Numberofsamples*0.025));
-            stats_averted.All.median{year} = sorted_totalaverted(ceil(Numberofsamples*0.975));
-            stats_averted.All.mode{year} = sorted_totalaverted(Numberofsamples*0.5);
-            stats_averted.All.low{year} = mode(round(sorted_totalaverted, -1));
-            stats_averted.All.high{year} = mean(sorted_totalaverted);
+            stats_averted.All.low{year} = sorted_totalaverted(floor(Numberofsamples*0.025));
+            stats_averted.All.high{year} = sorted_totalaverted(ceil(Numberofsamples*0.975));
+            stats_averted.All.median{year} = sorted_totalaverted(Numberofsamples*0.5);
+            stats_averted.All.mode{year} = mode(round(sorted_totalaverted, -1));
+            stats_averted.All.mean{year} = mean(sorted_totalaverted);
 
-            stats_averted.AllAE.mean{year} = sorted_totalavertedAE(floor(Numberofsamples*0.025));
-            stats_averted.AllAE.median{year} = sorted_totalavertedAE(ceil(Numberofsamples*0.975));
-            stats_averted.AllAE.mode{year} = sorted_totalavertedAE(Numberofsamples*0.5);
-            stats_averted.AllAE.low{year} = mode(round(sorted_totalavertedAE, -1));
-            stats_averted.AllAE.high{year} = mean(sorted_totalavertedAE);
+            stats_averted.AllAE.low{year} = sorted_totalavertedAE(floor(Numberofsamples*0.025));
+            stats_averted.AllAE.high{year} = sorted_totalavertedAE(ceil(Numberofsamples*0.975));
+            stats_averted.AllAE.median{year} = sorted_totalavertedAE(Numberofsamples*0.5);
+            stats_averted.AllAE.mode{year} = mode(round(sorted_totalavertedAE, -1));
+            stats_averted.AllAE.mean{year} = mean(sorted_totalavertedAE);
 
 
-            stats_averted.AllGP.mean{year} = sorted_totalavertedGP(floor(Numberofsamples*0.025));
-            stats_averted.AllGP.median{year} = sorted_totalavertedGP(ceil(Numberofsamples*0.975));
-            stats_averted.AllGP.mode{year} = sorted_totalavertedGP(Numberofsamples*0.5);
-            stats_averted.AllGP.low{year} = mode(round(sorted_totalavertedGP, -1));
-            stats_averted.AllGP.high{year} = mean(sorted_totalavertedGP);
+            stats_averted.AllGP.low{year} = sorted_totalavertedGP(floor(Numberofsamples*0.025));
+            stats_averted.AllGP.high{year} = sorted_totalavertedGP(ceil(Numberofsamples*0.975));
+            stats_averted.AllGP.median{year} = sorted_totalavertedGP(Numberofsamples*0.5);
+            stats_averted.AllGP.mode{year} = mode(round(sorted_totalavertedGP, -1));
+            stats_averted.AllGP.mean{year} = mean(sorted_totalavertedGP);
             
-            stats_averted.AllHosp.mean{year} = sorted_totalavertedHosp(floor(Numberofsamples*0.025));
-            stats_averted.AllHosp.median{year} = sorted_totalavertedHosp(ceil(Numberofsamples*0.975));
-            stats_averted.AllHosp.mode{year} = sorted_totalavertedHosp(Numberofsamples*0.5);
-            stats_averted.AllHosp.low{year} = mode(round(sorted_totalavertedHosp, -1));
-            stats_averted.AllHosp.high{year} = mean(sorted_totalavertedHosp);
+            stats_averted.AllHosp.low{year} = sorted_totalavertedHosp(floor(Numberofsamples*0.025));
+            stats_averted.AllHosp.high{year} = sorted_totalavertedHosp(ceil(Numberofsamples*0.975));
+            stats_averted.AllHosp.median{year} = sorted_totalavertedHosp(Numberofsamples*0.5);
+            stats_averted.AllHosp.mode{year} = mode(round(sorted_totalavertedHosp, -1));
+            stats_averted.AllHosp.mean{year} = mean(sorted_totalavertedHosp);
 
             
         end
