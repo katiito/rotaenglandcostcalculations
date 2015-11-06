@@ -1,4 +1,4 @@
-function [stats_averted, stats_total] = runAnalysis(Numberofsamples, Numberofagegroups, Numberofyears)
+function [stats_averted, stats_total] = runAnalysis(Numberofsamples, Numberofagegroups, NumberofagegroupsToSum, Numberofyears)
 
 
 
@@ -27,7 +27,7 @@ end
     
     %% Calculate costs per year per age group per healthcare setting
     for year = 1:Numberofyears
-        for agegroup = 1:Numberofagegroups
+        for agegroup = 1:NumberofagegroupsToSum
                 if agegroup < 7
                     hospcost = costs.HospPaed;
                 else
@@ -67,7 +67,7 @@ end
     
     relevantfields = {'AE','GP','Hosp'};
     for year = 1:Numberofyears
-        for agegroup = 1:Numberofagegroups
+        for agegroup = 1:NumberofagegroupsToSum
             for fld = relevantfields;
                 fld = fld{1};
                 %totalcosts.(fld).mean = 

@@ -62,16 +62,18 @@ function out = readinIncidenceData(NSamples)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %% Jemma's results for use in same paper
-        GPmode_dummy{1} = {-1.327974276, -1.75620359, -2.557815775, -3.033931301, -3.32319408, -4.047622661, -4.042491393, -4.023419131, -3.4347886};
-        GPmode_dummy{2} = {-1.362105525, -1.813579345, -2.633020591, -3.095544009, -3.3720819, -4.088338634, -4.108035729, -4.096495415, -3.532044806};
-        GPsd_dummy{1} = {0.06210594, 0.070968325, 0.057192449, 0.058836123, 0.062214465, 0.044075084, 0.031813401, 0.032373513, 0.032038487};
-        GPsd_dummy{2} = {0.0806655, 0.092229045, 0.074267385, 0.076768209, 0.081377906, 0.057427597, 0.041410565, 0.042204177, 0.041702273};
+        ProportionInCPRD = 0.08;
+        ProportionPopInEngland = 0.84;
+        GPmode_dummy{1} = {-1.36137645, -1.738916945, -2.520525062, -2.996739092, -3.246836852, -4.028460663, -4.007384731, -3.993230143, -3.342896289};
+        GPmode_dummy{2} = {-1.368797231, -1.755635651, -2.563747092, -3.04123573, -3.268440549, -4.055081803, -4.028559812, -4.002914847, -3.358629438};
+        GPsd_dummy{1} = {0.056924495, 0.069679675, 0.050590595, 0.054111487, 0.053059953, 0.036012384, 0.027917069, 0.028615737, 0.028373334};
+        GPsd_dummy{2} = {0.068639396, 0.083987727, 0.061055832, 0.065617601, 0.06478381, 0.043650061, 0.033735067, 0.034645132, 0.034260565};
         
         GPPersonYears{1} = {40877.76336, 46710.64767, 47559.52638, 48026.57646, 48004.21887, 454309.2848, 1507825.266, 1065563.95, 716828.9912};
         GPPersonYears{2} = {28212.43542, 31299.3811, 33047.99453, 33457.21563, 33806.98159, 319098.5529, 1031372.073, 739965.6088, 504331.9267};
         
-        GPActualCases{1} = {9527.676933, 6663.812162, 3295.473194, 2070.196338, 1574.13043, 7431.834031, 26403.12224, 19034.59197, 23724.97803};
-        GPActualCases{2} = {6471.005666, 4389.884747, 2347.174126, 1422.586374, 1091.191849, 5045.919824, 17566.77231, 12509.96441, 16255.91132};
+        GPActualCases{1} = {8929.880879, 6447.596613, 3330.184625, 2113.478344, 1614.25273, 7473.587628, 26007.18197, 18104.13818, 23897.377};
+        GPActualCases{2} = {6068.608639, 4275.095711, 2369.407343, 1469.733886, 1124.841659, 5074.648823, 17253.40137, 12001.54031, 16614.57836};
 %         avertedGP_Estimate{1} = {1305, 1403, 389, 241, 156, 502, 65, 30, -620}; %2013-14
 %         avertedGP_Estimate{2} = {755, 714, 28, 91, 69, 304, -611, -204, -1507}; %2014-15
 %         avertedGP_High95{1} = {2708, 2607, 826, 524, 380, 1218, 1768, 1279, 877}; %2013-14
@@ -92,10 +94,12 @@ function out = readinIncidenceData(NSamples)
                                     num2cell(repmat(NSamples, 1, size(pdfGPdummyPred{i},2))),...
                                     'UniformOutput', false);
             % get cases averted by untransform(inc) - actual
-            out.GP{i} = cellfun(@(personyears,d, actualcases) personyears .* exp(d) - actualcases,...
+            out.GP{i} = cellfun(@(personyears,d, actualcases, ppopn, PiD) ppopn .* (personyears .* exp(d) - actualcases)./PiD,...
                                     GPPersonYears{i},...
                                     GPdummySamples{i},...
                                     GPActualCases{i},...
+                                    num2cell(repmat(ProportionPopInEngland,1,size(GPmode_dummy{1},2))),...
+                                    num2cell(repmat(ProportionInCPRD,1,size(GPmode_dummy{1},2))),...
                                     'UniformOutput', false);                    
             
         end
@@ -105,17 +109,19 @@ function out = readinIncidenceData(NSamples)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %% NEED TO GET ALEX ELLIOT'S FIGURES FOR THESE
-        avertedAE_Estimate{1} = {0, 0, 0, 0, 0, 0, 0, 0, 0}; %2013-14
+        avertedAE_Estimate{1} = {3035.62, 0, 0, 0, 3751.31,-342.64,-1901.89,0, 401.28}; %2013-14 <1, 1-4, 5-14, 15-64, 65+ cf <1, 1, 2, 3, 4, 5-14, 15-44, 45-64, 65+
         avertedAE_Estimate{2} = {0, 0, 0, 0, 0, 0, 0, 0, 0}; %2014-15
-        avertedAE_High95{1} = {0, 0, 0, 0, 0, 0, 0, 0, 0}; %2013-14
-        avertedAE_High95{2} = {0, 0, 0, 0, 0, 0, 0, 0, 0}; %2014-15
+        avertedAE_SD{1} = {437.81,0, 0, 0, 927.10,246.82,492.99,0, 321.07}; %2013-14
+        avertedAE_SD{2} = {0, 0, 0, 0, 0, 0, 0, 0, 0}; %2014-15
+%         avertedAE_High95{1} = {0, 0, 0, 0, 0, 0, 0, 0, 0}; %2013-14
+%         avertedAE_High95{2} = {0, 0, 0, 0, 0, 0, 0, 0, 0}; %2014-15
 
         %% Calculate SD for Cases averted assuming Normal distribution of uncertainty
-        for i=1:size(avertedAE_Estimate,2)
-            avertedAE_SD{i} = cellfun(@(a,b)(a-b)/1.96, ...
-                                    avertedAE_High95{i}, avertedAE_Estimate{i},...
-                                        'UniformOutput', false);
-        end
+%         for i=1:size(avertedAE_Estimate,2)
+%             avertedAE_SD{i} = cellfun(@(a,b)(a-b)/1.96, ...
+%                                     avertedAE_High95{i}, avertedAE_Estimate{i},...
+%                                         'UniformOutput', false);
+%         end
         for i=1:size(avertedAE_Estimate,2)
             pdfAEAverted{i} = cellfun(@(a,b) makedist('Normal','mu',a','sigma',b'),...
                                     avertedAE_Estimate{i},...
@@ -144,9 +150,9 @@ function out = readinCostData(NSamples)
     %%%%%%%%%%%% GP COSTS %%%%%%%%%%%%%%%%%
     %%%%TRIANGLE distribution
     
-    costGPperconsultation_Estimate = 46;
-    costGPperconsultation_Low = 28;
-    costGPperconsultation_High = 67;
+    costGPperconsultation_Estimate = 38;
+    costGPperconsultation_Low = 23;
+    costGPperconsultation_High = 56;
     
     costPrescription_Estimate = 2.30;
     costPrescription_Low = 1.38;
@@ -158,13 +164,13 @@ function out = readinCostData(NSamples)
                                    
     %%%%%%%%%% Hospital Costs %%%%%%%%%%%%%%%%
     %%%% Triangle distribution
-    costNonPaedHosp_Estimate = 1181.24;
-    costNonPaedHosp_Low = 896.50;
-    costNonPaedHosp_High = 1343.44;
+    costNonPaedHosp_Estimate = 433.96;
+    costNonPaedHosp_Low = 335.72;
+    costNonPaedHosp_High = 493.35;
     
-    costPaedHosp_Estimate = 921.47;
-    costPaedHosp_Low = 622.27;
-    costPaedHosp_High = 1078.81;
+    costPaedHosp_Estimate = 695.57;
+    costPaedHosp_Low = 529.98;
+    costPaedHosp_High = 787.72;
     
     
     pdfNonPaedHospcosts = makedist('Triangular','a',costNonPaedHosp_Low,...
@@ -177,9 +183,11 @@ function out = readinCostData(NSamples)
                                    
     %%%%%%%%%%% A&E Costs %%%%%%%%%%%%%%
     %%%% Uniform distribution
-    costAE_Estimate = 116.54;
-    costAE_Low = 104.88;
-    costAE_High = 128.19;
+    costAE_Estimate = 123.71;
+    costAE_Low = 100.30;
+    costAE_High = 142.96;
+    
+    		
     
     pdfAEcosts = makedist('Uniform','lower',costAE_Low,...
                                     'upper',costAE_High);

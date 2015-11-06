@@ -1,10 +1,11 @@
 function main()
 
-Numberofsamples = 100000;
+Numberofsamples = 5e6;
 Numberofagegroups = 9;
+NumberofagegroupsToSum = 5;
 Numberofyears = 1;
 
-[averted, totalcost] = runAnalysis(Numberofsamples, Numberofagegroups, Numberofyears);
-printAnalysis(averted, totalcost, Numberofagegroups, Numberofyears)
+[averted, totalcost] = runAnalysis(Numberofsamples, Numberofagegroups, NumberofagegroupsToSum, Numberofyears);
+printAnalysis(averted, totalcost, Numberofagegroups, NumberofagegroupsToSum, Numberofyears)
 
 end

@@ -1,4 +1,4 @@
-function printAnalysis(averted, totalcost, Numberofagegroups, Numberofyears)
+function printAnalysis(averted, totalcost, Numberofagegroups, NumberofagegroupsToSum, Numberofyears)
 
     flds = fields(averted)';
     flds1 = flds(1:3); 
@@ -10,7 +10,7 @@ function printAnalysis(averted, totalcost, Numberofagegroups, Numberofyears)
             fld1 = fld{1};
             fld2 = flds2{index};
             o = sprintf('%s - %s', fld1, num2str(2012+year)); disp(o);
-            for agegroup = 1:Numberofagegroups
+            for agegroup = 1:NumberofagegroupsToSum
                 o = sprintf('%.0f\t(%.0f,%.0f)\t%.0f\t(%.0f,%.0f)',...
                     averted.(fld1).median{year}{agegroup},...
                         averted.(fld1).low{year}{agegroup},averted.(fld1).high{year}{agegroup},...
